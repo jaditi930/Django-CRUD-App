@@ -1,18 +1,20 @@
-let update_form=document.getElementById("myform")
-let btn=document.getElementById("update")
-let sf=document.getElementById("StartingPoint")
-let d=document.getElementById("Destynation")
-let uid=document.getElementById("uid")
-btn.addEventListener("click",()=>{
-      update_form.style.display="inline"
-      update_info()
+const item_form=document.getElementById("item-form")
+let add_btn=document.getElementById("add_item")
+console.log(add_btn)
+add_btn.addEventListener("click",()=>{
+    let clone_node=item_form.cloneNode(true)
+    console.log(clone_node)
+        let cust_form=document.getElementById("cust_form")
+    let subBtn=document.getElementById("submit")
+    subBtn.remove()
+    add_btn.remove()
+    cust_form.appendChild(clone_node)
+    cust_form.appendChild(subBtn)
+    cust_form.appendChild(add_btn)
+    let ele=document.getElementsByClassName("myitem")
+    console.log(ele)
+    for(let e=ele.length-3;e<ele.length;e++)
+    {
+    ele[e].value=""
+    }
 })
-function update_info()
-{    setInterval(()=>{
-    let new_sf=sf.value
-    let new_d=d.value
-    update_form.action=`update/${uid.value}/?q=${new_sf} ${new_d}`
-    console.log(update_form.action)
-},1000)
-     
-}
