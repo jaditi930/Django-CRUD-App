@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight {{flight.id}}</title>
+</head>
+<body>
+    This the page for flight from {{flight.start_point}} to {{flight.dest}}
+    <div id="update_form">
+        <h1>Update flights</h1> 
+            <input type="hidden" id="uid" name="uid" value="{{flight.id}}">
+    <button id="update">Update Flight</button><br>
+        {% comment %} <a id="update" href="{% url 'updateFlight' flight_id=flight.id %}?p={{flight.dest}}">Update Flight</a> {% endcomment %}
+        <form style="display:none;" action="" id="myform" method="POST">
+            {% csrf_token %}
+            <label for="StartingPoint">Start Point</label><br>
+            <input type="text" id="StartingPoint" name="StartingPoint" value="{{flight.start_point}}"><br>
+            <label for="Destynation">Destination</label><br>
+            <input type="text" id="Destynation" name="Destynation" value="{{flight.dest}}"><br>
+            <button type="submit" id="submit">Update Flight</button>
+          </form>
+        </div>
+    <script src= "{% static 'index.js' %}" ></script>
+</body>
+</html>
